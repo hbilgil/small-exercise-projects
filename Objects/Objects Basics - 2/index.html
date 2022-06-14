@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Object basics: Task 2</title>
+    <style>
+      p {
+        color: purple;
+        margin: 2.5em 1em;
+        padding: 1.5em 1em 1em;
+
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <section class="preview">
+
+    </section>
+
+  </body>
+
+  <script>
+                           
+    let bandInfo = {
+        name: 'Grup Vitamin',
+        nationality: 'Türkiye',
+        genre: 'Absürt Komedi tarzinda Türkçe Pop',
+        members: 3,
+        formed: 1990,
+        split: 1998,
+        albums: [{name: 'Bol Vitamin', released: 1991},
+                 {name: 'Deli Dolu (Best of)', released: 1996}, 
+                 {name: 'İyi Günler Türkiye', released: 1998}]
+        };
+
+        let spanData;
+        let myString;
+        let myNumber;
+
+        for (let key in bandInfo.albums[0]) {
+         spanData = bandInfo.albums[0][key];
+
+         if(typeof spanData == 'string'){
+         myString = spanData;
+         } else {
+         myNumber = spanData; 
+         }
+        }
+
+        let biography = bandInfo.name + " şarkilari uyarlayarak " + bandInfo.genre + " müzik yapan bir gruptur. " +
+                        "1988 yilinda Gökhan Semiz ve Emrah Anul' un konservatuvarda tanişmasindan sonra " + 
+                        "iki arkadaşa Selçuk Aksoy da dahil olmuş ve " + bandInfo.formed + 
+                        " yilinda bu üç arkadaş tarafindan " + bandInfo.nationality + "' de  kurulmuştur. " +
+                        "Grup Gökhan Semiz'in " + bandInfo.split + " yilinda elim bir trafik kazasi sonucu " +
+                        "hayatini kaybetmesiyle dağilmiştir. " + "Grubun ilk albümü " +`${myNumber}`+ " yilinda " +
+                        "çikan "  + `${myString}` + "' dir."
+
+
+    const section = document.querySelector('section');
+    let para1 = document.createElement('p');
+    para1.textContent = biography;
+    section.appendChild(para1);
+
+  </script>
+
+</html>

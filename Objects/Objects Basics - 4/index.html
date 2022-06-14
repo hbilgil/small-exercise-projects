@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Object basics: Task 4</title>
+    <style>
+      p {
+        color: purple;
+        margin: 0.5em 0;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <section class="preview">
+
+
+
+    </section>
+
+  </body>
+  <script>
+
+    function Cat(name, breed, color) {
+     this.name = name;
+     this.breed = breed;
+     this.color = color;
+     this.greeting = function() {
+        console.log(`Hello, said ${ this.name } the ${ this.breed }.`);
+     }
+   }
+
+    const cat = new Cat('Bertie', 'Cymric', 'white');
+    cat.name;
+    cat.breed;
+    cat.color;
+    cat.greeting();
+
+    const cat2 = new Cat('Elfie', 'Aphrodite Giant', 'ginger');
+    cat2.name;
+    cat2.breed;
+    cat2.color;
+    cat2.greeting();
+
+  </script>
+
+</html>
