@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetching image</title>
+</head>
+<body>
+  <style>
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+.search {
+  width: 20%;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 3px solid #00B4CC;
+  padding: 5px;
+  height: 20px;
+  border-radius: 5px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+.searchTerm:focus{
+  color: #00B4CC;
+}
+
+body {
+  background-color: #e6d8e7;
+  background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239800a1' fill-opacity='0.22'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+button {
+  background: blue;
+  border: 1px solid blue;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 16px;
+  min-height: 40px;
+  outline: 0;
+  padding: 12px 14px;
+  text-align: center;
+  text-rendering: geometricprecision;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+}
+
+button:hover,
+button:active {
+  background-color: whitesmoke;
+  background-position: 0 0;
+  color: blue;
+}
+
+button:active {
+  opacity: .5;
+}
+
+  </style>
+  <div class="search">
+    <input type="text" class="searchTerm" id="mySearch" placeholder="What are you looking for?">
+    <button id="search-button">Change Category</button>
+  </div>
+  <img src="#">
+  <button class="change-button">Get new gif</button>
+
+  <script>
+    
+
+    function getCatGif() {
+    fetch('https://api.giphy.com/v1/gifs/translate?api_key=R1Ffh9Rfab8XejoeanV8UEX2gPHAwe9n&s=cats', {mode: 'cors'})
+      .then(function(response) {
+        return response.json()
+        .then(function(response) {
+          img.src = response.data.images.original.url
+        })
+        .catch(e => {
+          console.log(e)
+        })
+      });
+    }
+
+    function getNewGif() {
+    const searchValue = document.getElementById("mySearch").value
+    
+    if(searchValue === '') {
+      fetch('https://api.giphy.com/v1/gifs/translate?api_key=R1Ffh9Rfab8XejoeanV8UEX2gPHAwe9n&s=cats', {mode: 'cors'})
+      .then(function(response) {
+        return response.json()
+        .then(function(response) {
+          img.src = response.data.images.original.url
+        })
+        .catch(e => {
+          console.log(e)
+        })
+      });
+    } else {
+    fetch(`https://api.giphy.com/v1/gifs/translate?api_key=R1Ffh9Rfab8XejoeanV8UEX2gPHAwe9n&s=${searchValue}`, {mode: 'cors'})
+      .then(function(response) {
+        return response.json()
+        .then(function(response) {
+          img.src = response.data.images.original.url
+        })
+        .catch(e => {
+          console.log(e)
+        })
+      });
+     }
+    }
+
+    function changeCategory() {
+      const searchValue = document.getElementById("mySearch").value
+      fetch(`https://api.giphy.com/v1/gifs/translate?api_key=R1Ffh9Rfab8XejoeanV8UEX2gPHAwe9n&s=${searchValue}`, {mode: 'cors'})
+      .then(function(response) {
+        return response.json()
+        .then(function(response) {
+          img.src = response.data.images.original.url
+        })
+        .catch(e => {
+          console.log(e)
+        })
+      });
+    }
+
+      const searchButton = document.getElementById('search-button')
+      searchButton.addEventListener('click', changeCategory)
+
+      const button = document.querySelector('.change-button')
+      button.addEventListener('click', getNewGif)
+
+      const img = document.querySelector('img');
+
+      document.addEventListener('DOMContentLoaded', getCatGif)
+  </script>
+</body>
+</html>
