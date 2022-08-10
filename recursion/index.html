@@ -13,18 +13,48 @@
         body {
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             display: flex;
+            flex-direction: column;
+            gap: 20px;
             align-items: center;
-            justify-content: space-between;
+            background-image: linear-gradient(to right, #c5d0d6, #adcadd, #95c4e6, #7fbcef, #6ab4f8);
+        }
+
+        h1 {
+            font-size: 60px;
+            font-weight: 800;
+        }
+
+        .caption {
+            text-align: center;
+            border-bottom: 3px solid white;
+        }
+
+        .main {
+            display: flex;
             flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
             gap: 20px;
         }
 
-        div {
-            border: 1px solid black;
+        .one,
+        .two,
+        .three,
+        .four,
+        .five,
+        .six,
+        .seven,
+        .eight,
+        .nine {
+            border: 2px solid black;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            padding: 10px;
+            gap: 10px;
         }
 
         .result {
@@ -86,58 +116,58 @@
 
     </style>
 
-    <div class="1">
-        <h3 class="caption">Sum Range</h3>
-        <p class="result" data-result-sum></p>
-        <button id="1">Show Result</button>
-    </div>
+    <h1>Math in JavaScript</h1>
 
-    <div class="2">
-        <h3 class="caption">Power</h3>
-        <p class="result" data-result-pow></p>
-        <button id="2">Show Result</button>
-    </div>
+    <div class="main">
+        <div class="one">
+            <h3 class="caption">SUM of RANGE</h3>
+            <p class="result" data-result-sum></p>
+            <button id="1">Try yourself</button>
+        </div>
 
-    <div class="3">
-        <h3 class="caption">Factorial</h3>
-        <p class="result" data-result-factorial></p>
-        <button id="3">Show Result</button>
-    </div>
+        <div class="two">
+            <h3 class="caption">POWER of a NUMBER</h3>
+            <p class="result" data-result-pow></p>
+            <button id="2">Try yourself</button>
+        </div>
 
-    <div class="4">
-        <h3 class="caption">Value Check</h3>
-        <p class="result" data-result-value-check></p>
-        <button id="4">Show Result</button>
-    </div>
+        <div class="three">
+            <h3 class="caption">FACTORIAL of a NUMBER</h3>
+            <p class="result" data-result-factorial></p>
+            <button id="3">Try yourself</button>
+        </div>
 
-    <div class="5">
-        <h3 class="caption">Product</h3>
-        <p class="result" data-result-product></p>
-        <button id="5">Show Result</button>
-    </div>
+        <div class="four">
+            <h3 class="caption">VALUE CHECK: ([x, y, z] < 7) ?</h3>
+            <p class="result" data-result-value-check></p>
+            <button id="4">Try yourself</button>
+        </div>
 
-    <div class="6">
-        <h3 class="caption">Object Search</h3>
-        <p class="result" data-result-object-search></p>
-        <button id="6">Show Result</button>
-    </div>
+        <div class="five">
+            <h3 class="caption">PRODUCT OF ARRAY VALUES</h3>
+            <p class="result" data-result-product></p>
+            <button id="5">Try yourself</button>
+        </div>
 
-    <div class="7">
-        <h3 class="caption">Multi-dimensional Array</h3>
-        <p class="result" data-result-multi-dimension></p>
-        <button id="7">Show Result</button>
-    </div>
+        <div class="six">
+            <h3 class="caption">OBJECT SEARCH<br>(Hint: Number is divided by 11, String is foo or bar with a number nearby")</h3>
+            <p class="result" data-result-object-number></p>
+            <p class="result" data-result-object-string></p>
+            <button id="6">Try yourself for Number</button>
+            <button id="7">Try yourself for String</button>
+        </div>
 
-    <div class="8">
-        <h3 class="caption">Squares sum</h3>
-        <p class="result" data-result-squares-sum></p>
-        <button id="8">Show Result</button>
-    </div>
+        <div class="eight">
+            <h3 class="caption">SQUARES SUM of ARRAY VALUES</h3>
+            <p class="result" data-result-squares-sum></p>
+            <button id="8">Try yourself</button>
+        </div>
 
-    <div class="9">
-        <h3 class="caption">Replicate</h3>
-        <p class="result" data-result-replicate></p>
-        <button id="9">Show Result</button>
+        <div class="nine">
+            <h3 class="caption">REPLICATE a NUMBER</h3>
+            <p class="result" data-result-replicate></p>
+            <button id="9">Try yourself</button>
+        </div>
     </div>
 
 </body>
