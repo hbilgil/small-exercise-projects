@@ -8,6 +8,7 @@ const result7 = document.querySelector('[data-result-object-string]');
 const result8 = document.querySelector('[data-result-squares-sum]');
 const result9 = document.querySelector('[data-result-replicate]');
 const result10 = document.querySelector('[data-result-fibonacci]');
+const result11 = document.querySelector('[data-result-merge-sort]');
 
 const button1 = document.getElementById('1');
 const button2 = document.getElementById('2');
@@ -19,6 +20,7 @@ const button7 = document.getElementById('7');
 const button8 = document.getElementById('8');
 const button9 = document.getElementById('9');
 const button10 = document.getElementById('10');
+const button11 = document.getElementById('11');
 
 /*---SUM of RANGE FUNCTIONS---*/
 
@@ -345,4 +347,66 @@ function fibRange(n) {
 button10.addEventListener('click', getNValueForFib);
 window.addEventListener('load', () => {
     fibRange(6);
+})
+
+/*---MERGE SORT FUNCTIONS---*/
+
+function getValuesForMergeSort() {
+    let value1 = prompt("Enter 1st number of an array with 10 elements");
+    let value2 = prompt("Enter 2nd number of an array with 10 elements");
+    let value3 = prompt("Enter 3rd number of an array with 10 elements");
+    let value4 = prompt("Enter 4th number of an array with 10 elements");
+    let value5 = prompt("Enter 5th number of an array with 10 elements");
+    let value6 = prompt("Enter 6th number of an array with 10 elements");
+    let value7 = prompt("Enter 7th number of an array with 10 elements");
+    let value8 = prompt("Enter 8th number of an array with 10 elements");
+    let value9 = prompt("Enter 9th number of an array with 10 elements");
+    let value10 = prompt("Enter 10th number of an array with 10 elements");
+    let a = parseInt(value1);
+    let b = parseInt(value2);
+    let c = parseInt(value3);
+    let d = parseInt(value4);
+    let e = parseInt(value5);
+    let f = parseInt(value6);
+    let g = parseInt(value7);
+    let h = parseInt(value8);
+    let i = parseInt(value9);
+    let j = parseInt(value10);
+    let array = [a,b,c,d,e,f,g,h,i,j];
+    mergeSort(array);
+}
+
+function mergeSort(array) {
+    if (array.length <= 1) return array;
+
+    const midPoint = Math.floor(array.length / 2);
+    const leftHalf = mergeSort(array.slice(0, midPoint));
+    const rightHalf = mergeSort(array.slice(midPoint));
+    return merge(leftHalf, rightHalf);
+}
+
+function merge(left, right) {
+    let result = [];
+
+  while (left.length > 0 && right.length > 0) {
+    const arrayWithMin = left[0] < right[0] ? left : right;
+    const mergeElement = arrayWithMin.shift();
+    result.push(mergeElement);
+  }
+  while (left.length > 0) {
+    const mergeElement = left.shift();
+    result.push(mergeElement);
+  }
+  while (right.length > 0) {
+    const mergeElement = right.shift();
+    result.push(mergeElement);
+  }
+  result11.textContent = result;
+  return result.concat(left, right);
+}
+
+button11.addEventListener('click', getValuesForMergeSort);
+window.addEventListener('load', () => {
+    let array = [4,7,5,9,3,6,8,1,0,2];
+    mergeSort(array);
 })
