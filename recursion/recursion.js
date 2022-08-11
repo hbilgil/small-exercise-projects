@@ -7,6 +7,7 @@ const result6 = document.querySelector('[data-result-object-number]');
 const result7 = document.querySelector('[data-result-object-string]');
 const result8 = document.querySelector('[data-result-squares-sum]');
 const result9 = document.querySelector('[data-result-replicate]');
+const result10 = document.querySelector('[data-result-fibonacci]');
 
 const button1 = document.getElementById('1');
 const button2 = document.getElementById('2');
@@ -17,6 +18,7 @@ const button6 = document.getElementById('6');
 const button7 = document.getElementById('7');
 const button8 = document.getElementById('8');
 const button9 = document.getElementById('9');
+const button10 = document.getElementById('10');
 
 /*---SUM of RANGE FUNCTIONS---*/
 
@@ -320,3 +322,27 @@ button9.addEventListener('click', getValuesToReplicate);
 window.addEventListener('load', () => {
     replicate(3, 24);
 });
+
+/*---FIBONACCI SUM of a RANGE FUNCTIONS---*/
+
+function getNValueForFib() {
+    let value = prompt("Enter a Number");
+    let n = parseInt(value);
+    fibRange(n);
+}
+
+function fibRange(n) {
+    let fib;
+    if(n < 2) {
+    fib = n;
+    } else {
+	fib = fibRange(n - 1) + fibRange(n - 2);
+    }
+    result10.textContent = fib;
+    return fib;
+}
+
+button10.addEventListener('click', getNValueForFib);
+window.addEventListener('load', () => {
+    fibRange(6);
+})
